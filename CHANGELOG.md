@@ -56,8 +56,3 @@
   `https://raw.githubusercontent.com/TreehaoL/LiRuYun-CoursePlayer/main/LiRuYun-CoursePlayer.user.js`。
 - 从上面这个链接装过一次以后，仓库里的 `@version` 一变大，Tampermonkey 就会自动提示更新，
   不用再手动复制粘贴重装。
-
-## 另有一个不带面板的版本
-
-- `可选-纯逻辑版/LiRuYun-v3.user.js`：**逻辑完全一样**，只是界面不重排。
-- 两个文件同一时间只装一个；它们之间有让位机制，同页不会出现两个面板。

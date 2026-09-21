@@ -18,7 +18,6 @@
 // @description  「⚙ 设置」弹独立窗口（偏好设置常驻其中），列表刷新后当前视频自动滚到中间；
 // @description  列表与日志上方各有一条分隔条、面板右下角有缩放手柄，三处尺寸都能拖、拖完记住；
 // @description  日志可往回翻历史（默认跟最新，往上翻就不抢滚动条）；另有「—」最小化与 ◎ 悬浮球。
-// @description  界面重排不影响任何判定逻辑 —— 与纯逻辑版（LiRuYun-v3.user.js）功能完全一致。
 // @description  装好后 Tampermonkey 会自动比对仓库版本并提示更新（头部带 @downloadURL / @updateURL）。
 // @downloadURL  https://raw.githubusercontent.com/TreehaoL/LiRuYun-CoursePlayer/main/LiRuYun-CoursePlayer.user.js
 // @updateURL    https://raw.githubusercontent.com/TreehaoL/LiRuYun-CoursePlayer/main/LiRuYun-CoursePlayer.user.js
