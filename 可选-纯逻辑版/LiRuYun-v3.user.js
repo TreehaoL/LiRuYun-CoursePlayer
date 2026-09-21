@@ -14,6 +14,9 @@
 // @description  日志可往回翻历史（默认跟最新，往上翻就不抢滚动条）。设置里可调透明度、
 // @description  自动静音、弹窗拦截、完成后是否自动下一节、自定义达标进度。
 // @description  与 v2（LiRuYun-SafePlusBrute.user.js）同页共存时，本版本自动接管。
+// @description  装好后 Tampermonkey 会自动比对仓库版本并提示更新（头部带 @downloadURL / @updateURL）。
+// @downloadURL  https://raw.githubusercontent.com/TreehaoL/LiRuYun-CoursePlayer/main/LiRuYun-CoursePlayer.user.js
+// @updateURL    https://raw.githubusercontent.com/TreehaoL/LiRuYun-CoursePlayer/main/LiRuYun-CoursePlayer.user.js
 // @match        https://moodle.scnu.edu.cn/*
 // @grant        GM_getValue
 // @grant        GM_setValue

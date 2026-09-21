@@ -5,7 +5,7 @@
 > 面板上随时能看到"现在播到哪、还差多少"。
 
 - **当前版本**：`1.0.0`（首个正式版；此前的 5.x 是同一份代码的开发期版本号）
-- **安装文件**：本目录下的 [`LiRuYun-CoursePlayer.user.js`](./LiRuYun-CoursePlayer.user.js)（**377322 bytes**）
+- **安装文件**：本目录下的 [`LiRuYun-CoursePlayer.user.js`](./LiRuYun-CoursePlayer.user.js)（**377679 bytes**）
   —— 文件名就是它的正式名（CoursePlayer = 课程播放助手）；装进 Tampermonkey 后列表里显示的是
   `@name`「砺儒云课程播放助手」
 - **使用说明**：[`使用说明.md`](./使用说明.md)（每一步做什么、每个开关什么效果、出问题先看哪里）
@@ -23,13 +23,22 @@
 3. 把 `LiRuYun-CoursePlayer.user.js` 的**全部内容**粘贴进去（覆盖模板里的示例代码）→ `Ctrl+S` 保存；
 4. 回到砺儒云页面**刷新一次**。
 
-### 方式 B：从 GitHub 安装
+### 方式 B：从 GitHub 安装（推荐，能自动更新）
 
-1. 在本仓库里点开 `LiRuYun-CoursePlayer.user.js`；
-2. 点右上角的 **Raw** 按钮；
-3. Tampermonkey 会自动识别并弹出安装页 → 点「安装」。
+安装链接（就是仓库里那个 Raw 地址）：
 
-> 上传到 GitHub / Greasy Fork 时：本目录的 `.js` 与几份文档直接放仓库根目录即可。
+```
+https://raw.githubusercontent.com/TreehaoL/LiRuYun-CoursePlayer/main/LiRuYun-CoursePlayer.user.js
+```
+
+1. 在浏览器里打开上面的链接；
+2. Tampermonkey 会自动识别并弹出安装页 → 点「安装」；
+3. 装完回到砺儒云页面**刷新一次**。
+
+脚本头部带了 `@downloadURL` / `@updateURL`，都指向这个地址，所以**以后仓库里的 `@version` 一变大，
+Tampermonkey 就会自动提示更新**，不用再手动重装。
+
+> 仓库根目录的结构与本目录一致：`.js` 与 5 份文档在根目录，`可选-纯逻辑版/` 是子目录。
 
 
 ### 只能装一个
@@ -140,7 +149,7 @@ __liruyun.bruteApi().nudge()  // 手动催一次页面进度刷新
 
 | 版本 | 要点 |
 | --- | --- |
-| **1.0.0** | **首个正式版**：定名「砺儒云课程播放助手」，版本号从开发期的 5.x 正式化到 1.0.0；脚本文件名也从 `LiRuYun-v3pro.user.js` 改为 `LiRuYun-CoursePlayer.user.js`；功能与 5.5.0 完全一致（**377322 bytes**） |
+| **1.0.0** | **首个正式版**：定名「砺儒云课程播放助手」，版本号从开发期的 5.x 正式化到 1.0.0；脚本文件名也从 `LiRuYun-v3pro.user.js` 改为 `LiRuYun-CoursePlayer.user.js`；补上 `@downloadURL` / `@updateURL` 支持自动更新（**377679 bytes**） |
 | 5.5.0 | 视频列表与模式页之间加**可拖分隔条**；列表 / 日志 / 面板三处尺寸都能自己调并记住 |
 | 5.4.0 | 偏好设置常驻设置窗口（不再开一次搬一次）；日志可**滚动查看历史**（默认跟最新、往上翻不抢）；日志写满 400 行缓冲区 |
 | 5.3.0 | 日志防刷屏；暴力模式达标后**自动催页面读数**；风险确认"当次会话内免问" |

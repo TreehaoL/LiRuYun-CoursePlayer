@@ -23,6 +23,12 @@
   同一页只留一个面板（`test-version-coexist` 的 C 场景守着这条）。
 - ⚠ 升级提醒：开发期版本（`砺儒云播放助手 v3pro · 分页签面板`）与本版 `@name` 不同，
   Tampermonkey 视为两个脚本。装好 1.0.0 后请到 Tampermonkey 里把 5.x 那条**关掉开关**。
+- **支持自动更新**：脚本头部写入 `@downloadURL` / `@updateURL`，都指向
+  `https://raw.githubusercontent.com/TreehaoL/LiRuYun-CoursePlayer/main/LiRuYun-CoursePlayer.user.js`。
+  从 Raw 链接装过一次以后，仓库里的 `@version` 一变大，Tampermonkey 就会自动提示更新，
+  不需要再手动复制粘贴重装。
+  （如果你是在这一条加上之前就装好的，请用上面的链接**重新安装一次**，把这两个地址带进脚本头；
+  之后就能自动更新了。）
 
 ## v3pro 5.5.0
 
