@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         砺儒云课程播放助手
 // @namespace    https://moodle.scnu.edu.cn/
-// @version      1.0.0
+// @version      1.0.1
 // @description  单文件油猴脚本：整门课视频清单（带每节进度）+ 队列连播 + 进度监控 + 面板化操作。
 // @description  【安全模式】按真实进度自动切下一节（达标线从课程页读取，默认 90%）；
 // @description  自适应采集整门课的节次（多容器择优 + 自动展开折叠章节 + 服务端接口兜底），
@@ -1800,7 +1800,7 @@
 
   function proDebugApi() {
     return {
-      version: "1.0.0",
+      version: "1.0.1",
       state: function () {
         var ui = proEl("scnu-liruyun-helper");
         var logEl = document.querySelector("#lr-pro-log .lr-log");
@@ -2104,7 +2104,7 @@
   //
   // 这个模块同时被 v3（纯逻辑版）和正式版（带面板）使用，两条版本线现在分开了：
   //   · 纯逻辑版 LiRuYun-v3.user.js ：沿用逻辑迭代线，当前 3.4.0 —— 就是下面写的这个值。
-  //   · 正式版 LiRuYun-CoursePlayer.user.js：走发布线 1.0.0，由 tools/create-v3pro.mjs 在生成时
+  //   · 正式版 LiRuYun-CoursePlayer.user.js：走发布线 1.0.1，由 tools/create-v3pro.mjs 在生成时
   //     把下面这一行替换掉（两处必须一起改，否则防重入会认错版本）。
   // 历次逻辑线版本：
   // 3.1.0：新增「站点原生弹窗自动确定」（tools/_dialog-guard-module.js）。
@@ -2112,7 +2112,8 @@
   // 3.3.0：日志防刷屏（同内容折叠）+ 关不掉的站点提示条不再重复清理。
   // 3.4.0：日志写满（最多 80 行、框内滚动）；偏好设置常驻设置窗口；主面板加可拖分隔条。
   // 1.0.0：正式版定版（原 v3pro 5.5.0）。逻辑与 3.4.0 完全一致，只是从此有正式名字与版本号。
-  var SCRIPT_VERSION = "1.0.0";
+  // 1.0.1：界面文案清理（发包参数标题不再提"比原版保守"）；仓库只保留这一个安装文件。
+  var SCRIPT_VERSION = "1.0.1";
   // 本份构建带不带面板重排层（pro）？
   //   · 纯逻辑版 LiRuYun-v3.user.js       → false（这个模块里的原值）
   //   · 正式版   LiRuYun-CoursePlayer.user.js     → 由 tools/create-v3pro.mjs 在生成时改成 true
@@ -2613,16 +2614,17 @@
     //    两种情况都走这里：对方是更新版本（旧版忘了关），或对方是同号但更完整的构建。
     if (marker.panel && !IS_PANEL_BUILD) {
       try {
-        console.warn(TAG, "检测到带面板的正式版（v" + marker.version +
-          "）在本页运行，本版本（纯逻辑版 v" + SCRIPT_VERSION + "）让位。");
+        console.warn(TAG, "检测到带面板的版本（v" + marker.version +
+          "）在本页运行，本版本（无面板构建 v" + SCRIPT_VERSION + "）让位。");
       } catch (_) {}
       return true;
     }
     // B. 本份带面板、对方不带 → 接管。
-    //    v3 是 3.4.0 而发布线是 1.0.0，按版本大小会被判成"对方更新"而错误让位 —— 显式挡掉。
+    //    v3 是 3.4.0 而发布线是 1.0.x，按版本大小会被判成"对方更新"而错误让位 —— 显式挡掉。
     if (IS_PANEL_BUILD && !marker.panel) {
       try {
-        console.warn(TAG, "检测到纯逻辑版（v" + marker.version + "）在本页运行，本版本接管（面板版优先）。");
+        console.warn(TAG, "检测到同一脚本的无面板构建（v" + marker.version +
+          "）在本页运行，本版本接管（带面板的优先）。");
       } catch (_) {}
       return false;
     }
@@ -3639,7 +3641,7 @@
     box.appendChild(diagBox);
 
     // ---- 发包参数（可折叠，默认展开；收起后状态存 liruyun 存储里，刷新后保持）----
-    var basic = bruteMkDetails("发包参数（默认比第三方原版保守：原版 10ms × 1000 发）", "bruteparams", true);
+    var basic = bruteMkDetails("发包参数", "bruteparams", true);
     basic.className = "lr-secbox lr-brutesec";
     // 自动适配：按视频总时长反推发包次数（这是"该发多少"的正确算法）
     basic.appendChild(bruteMkToggle("autofit", "自动适配发包次数（按视频总时长）", BRUTE.autoFit,
